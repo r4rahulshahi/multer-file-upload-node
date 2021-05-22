@@ -27,7 +27,7 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage, limits: { fileSize: 2 * 1024 * 1024 } });
 
 // max limit can be set here 4 ,if no limit remove 4 
 app.post('/bulk', upload.array('profiles', 4), (req, res) => {
